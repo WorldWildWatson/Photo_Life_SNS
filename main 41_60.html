@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 41 お月見だんご
+        //     あなたはお月見の準備をしています．子供2人にいくつお月見だんごがほしいかをたずねますが，
+        //     やんちゃな子は明らかに食べきれない数のだんごを要求してきます．
+        //     付き合いきれないのであなたは5より大きい数字を要求された場合には5個しか与えないことにしました．
+        //     もちろん5以下の場合にはその数のだんごを与えます．
+        //     必要なだんごの数を求める getNumberOfDango()関数を作成してください．
+        // function getNumberOfDango(s) {
+        //     const array = s.split(" ");
+        //     console.log(array);
+        //     if (array[0] > 5 && array[1] <= 5) {
+        //         return 5 + parseInt(array[1]);
+        //     } else if (array[0] <= 5 && array[1] > 5) {
+        //         return parseInt(array[0]) + 5;
+        //     } else if (array[0] > 5 && array[1] > 5) {
+        //         return 5 + 5;
+        //     } else {
+        //         return parseInt(array[0]) + parseInt(array[1]);
+        //     }
+        // }
+        // console.log(getNumberOfDango('3 50'));    // 8
+        // console.log(getNumberOfDango('100 500'));    // 10
+        // console.log(getNumberOfDango('2 4'));    // 6
+
+        //[余談]JS比較演算子では、2 つのオペランドが異なる型ならば JavaScript はそのオペランドを比較に適した型に変換しようとします。
+        // console.log(10 > 5); //true
+        // console.log("10" > 5); //true
+        // console.log("10a" > 5); //false
+        // console.log("10" + 5); //105
+        // console.log(10 > "5"); //true
+        // console.log(10 + "5"); //105
+        // console.log("10" > "5"); //false
+
+        // 42 衣替え
+        //     そろそろ衣替えのシーズンです．冬服をしまって夏服を出しましょう．
+        //     10着の服に関してそれが夏物か冬物かの情報が与えられるので，
+        //     その半分(5着) 以上が夏物になっているかどうか(なっていればOK，なっていなければNG)
+        //     を判定する isReadyForSummer()関数を作成してください．
+        // function isReadyForSummer(s) {
+        //     const arr = s.match(/S/g);
+        //     // console.log(arr);
+        //     // return arr.length;
+        //     if (arr.length >= 5){
+        //         return "OK!!";
+        //     }else {
+        //         return "NG!!";
+        //     }
+        // }
+        // console.log(isReadyForSummer('W W W W W S S S S S'));    // OK
+        // console.log(isReadyForSummer('S S W W S W W W W W'));    // NG
+        // console.log(isReadyForSummer('W S S S S S S S S W'));    // OK
+
+        // 43 ピラミッドの作り方
+        //     あなたのクラスでは，運動会の出し物で人間ピラミッドをやることになりました．
+        //     段数nのピラミッドを組むのに必要な人数を求める getNumberOfHuman()関数を作成してください．
+        // 【例】
+        // ピラミッドの段数: 5段
+        // 1 + 2 + 3 + 4 + 5 = 15
+        // → 必要な人数: 15人
+        // function getNumberOfHuman(n) {
+        //     const array = [];
+        //     for (i = 0; i < n + 1; i++) {
+        //         array.push(i);
+        //     }
+        //     const total = array.reduce(function (sum, element) {
+        //         return sum + element;
+        //     }, 0);
+        //     return total
+        // }
+        // console.log(getNumberOfHuman(4));    // 10
+        // console.log(getNumberOfHuman(10));    // 55
+        // console.log(getNumberOfHuman(50));    // 1275
+
+        // 44 トリック・オア・トリート
+        //     Trick or Treat! ハロウィーンのシーズンです．あなたの子供はわがままなので
+        //     お菓子といってもキャンディかチョコレートでないと満足してくれません．
+        //     文字列が与えられるので，これがcandyかchocolateであればThanks!，
+        //     その他の場合は No!という子供のリアクションを出力する 
+        //     candyOrChocolate()関数を作成してください．
+        // function candyOrChocolate(s) {
+        //     if(s =="chocolate" || s == "candy" ){
+        //         return "Thanks!";
+        //     } else {
+        //         return "No!";
+        //     }
+        // }
+        // console.log(candyOrChocolate('chocolate'));    // Thanks!
+        // console.log(candyOrChocolate('candy'));    // Thanks!
+        // console.log(candyOrChocolate('pannacotta'));    // No!
+
+        // 45 11 / 11
+        //     今日はみんなで棒状のチョコレートお菓子を持ち寄るパーティーをします．
+        //     このお菓子が合計で11本以上あればパーティーが開催できます．
+        //     このお菓子の1本は数字の1で表され，本数分だけ1が連続する文字列が与えられるので，
+        //     パーティーが開催できればOK，できなければ必要な本数を出力する canParty()関数を作成してください．
+        // 【例】
+        // 111111111111 → 12 ≧ 11本なのでOK
+        // 1111111 → 7 < 11 本なのでNG，あと 11 - 7 = 4 本必要
+
+        // function canParty(s) {
+        //     const length = s.length;  //文字列でもlengthって使えるんだね
+        //     if (length >= 11) {
+        //         return "OK!!";
+        //     } else {
+        //         return "あと" + (11 - length) + "本!!";
+        //     }
+        //     return length;
+        // }
+        // console.log(canParty('11111111111'));    // OK
+        // console.log(canParty('1111'));    // 7
+        // console.log(canParty('1111111111111111'));    // OK
+
+        // 46 ワインのキャッチコピー
+        //     あなたはあるワインの銘柄のマーケティングを担当しています．良いキャッチコピーを考えるため，
+        //     とりあえず「〜の中で最高」というフレーズを色々作ってみることにしました．
+        //     2つの文字列が与えられるので，"Best in" とそれらの文字列をすべて半角スペース区切りで結合して出力する
+        //     bestCopy()関数を作成してください．
+        //     【例】
+        //     hundred years → Best in hundred years
+        //     the universe → Best in the universe
+
+        // function bestCopy(s) {
+        //     return "Best in" + " " + s;
+        // }
+
+        // console.log(bestCopy('a decade'));    // Best in a decade
+        // console.log(bestCopy('the world'));    // Best in the world
+        // console.log(bestCopy('history ever'));    // Best in history ever
+
+        // 47 ガチャ期待値計算
+        //     あなたがプレイしているゲームで推しキャラが実装されたので，
+        //     予算と相談して引ける確率を算出したいと思いました．
+        //     推しキャラの当選確率n（%）と試行回数t（数値）を入力し，
+        //     1回以上推しを引ける確率（%）を出力する probabilityGetSSR()関数を作成してください．
+        //     なお，出力する確率の小数点以下は四捨五入してください．
+        //参考
+        //P確率をX回試行して、N回以上当たる確率
+        // P = 確率            X = 試行回数            N = 当たりの回数
+        // N回以上当たる確率 = 当たらない確率×当たる確率×組み合わせ数
+        // x = 試行回数  N = あたり回数
+        // N確率 = {(1 - P) ^ (x - N)}  *  {1 - (1 - P) ^ N}  *  xCN
+        // ■７％で当たる物を15回試行
+        // 例) ２回以上当たる確率
+        //     (93 / 100) ^ 13 * (7 / 100) ^ 2 * 15C2 = 2回以上当たる確率
+        //         (1 - 0.07) ^ 13 * 1 - (1 - 0.07) ^ 2 * 15C2 = 2回以上当たる確率
+
+        function probabilityGetSSR(n, t) {
+            // 1回以上当たる確率 = (1 - P) ^ (x - 1) * 1 - (1 - P) ^ 1 * xC1
+            console.log((1 - (n / 100)) ** (t - 1));
+            const gacha1 = ((1 - (n / 100)) ** (t - 1)) * (1 - (1 - (n / 100) ) ** 1) * t;
+            return gacha1;
+        }
+
+        console.log(probabilityGetSSR(100, 100));    // 63
+        // console.log(probabilityGetSSR(1, 100));    // 63
+        // console.log(probabilityGetSSR(1.5, 70));    // 65
+        // console.log(probabilityGetSSR(1, 200));    // 87
+
+
+
+
+
+
+
+
+
+        // 21 nまでの和
+        // ある2以上の整数nが与えられます．
+        // 1からnまでの和を出力するgetSum()関数を作成してください．
+        // 挙動しなかったやつ
+        // const sum = 0;
+        // const array = [];
+        // function getSum(n) {
+        //     for (let i = 1; i < n + 1; i++) {
+        //         sum = sum + i;
+        //         array.push(sum);
+        //         // const last = array.slice(-1);
+        //         console.log(sum);
+        //         return array;
+        //     }
+        // }
+        // 挙動しているやつ
+        // function getSum(n) {
+        //     const array = [];
+        //     for (i = 0; i < n + 1; i++) {
+        //         array.push(i);
+        //         // console.log(array.push(i));  //これを検証画面で見るとなぜか２の倍数になってる
+        //         console.log(array);
+        //         //for文は処理を繰り返す、だけど一旦は最後の処理が行われた状態が成果物になる？
+        //     }
+        //     const total = array.reduce(function (sum, element) {
+        //         return sum + element;
+        //     }, 0);
+        //     return total
+        // }
+        // console.log(getSum(10));    // 55
+        // console.log(getSum(99));    // 4950
+
+        // 22 数字の桁数
+        // ある10進数の正の整数nが与えられます．
+        // nが何桁かを数字で出力する getNumberOfDigits()関数を作成してください．
+        ///String() コンストラクターを使用して文字列として生成することができます。
+
+        // function getNumberOfDigits(n) {
+        //     console.log(String(n));  //これで文字列に変換している
+        //     const array = String(n).split('');  //一文字一文字の配列に置き換えている
+        //     console.log(array);
+        //     return array.length; //その配列のlengthを出す
+        // }
+        // console.log(getNumberOfDigits(100));    // 3
+        // console.log(getNumberOfDigits(114514));    // 6
+
+        // 23 サイコロの裏面
+        // 一般的な6面サイコロの目を表す整数nに対し，その裏側にある目を出力する getBackSide()関数を作成してください．
+
+        // function getBackSide(n) {
+        //     return 7-n;  //サイコロの法則性を見つける 和が７になる
+        // }
+        // console.log(getBackSide(1));    // 6
+        // console.log(getBackSide(3));    // 4
+
+        // 24 単位の変換
+        // ある正の整数nが入力されます．
+        // n分から秒へ変換する convertToSeconds()関数を作成してください．
+        // function convertToSeconds(n) {
+        //     return n*60;
+        // }
+        // console.log(convertToSeconds(16));    // 960
+        // console.log(convertToSeconds(3));    // 180
+
+        // 25 充電時間
+        // 1分間で1 % の充電が可能なスマートフォンの充電器があります．
+        // 現在のスマートフォンのバッテリーの残量n % からこの充電器で100 % まで充電するのに何分かかるかを求める
+        // getTimeUntilFull()関数を作成してください．
+        // function getTimeUntilFull(n) {
+        //     return 100-n;
+        // }
+        // console.log(getTimeUntilFull(70));    // 30
+        // console.log(getTimeUntilFull(25));    // 75
+
+        // 26 頭文字
+        // あなたは半角アルファベットの苗字と名前からそれぞれ 1文字目を取りイニシャルを作ることにしました．
+        // 半角スペース区切りで苗字と名前が入力されるので，1文字目を取り "."(半角ドット)で区切った文字列を出力する
+        // getInitialFromName()関数を作成してください．
+        // function getInitialFromName(s) {
+        //     //半角スペースので分かれているところをそれぞれの配列要素とした配列を組む
+        //     const array = s.split(" ");
+        //     // console.log(array);
+        //     // console.log(array[0]);
+        //     // console.log(array[1]);
+        //     //それぞれの要素の一文字目を.sliceで取り出す
+        //     const ini1 = array[0].slice(0, 1); 
+        //     const ini2 = array[1].slice(0, 1);
+        //     return ini1 + "." + ini2;
+        // }
+        // console.log(getInitialFromName('Dio Brando'));    // D.B
+        // console.log(getInitialFromName('Pannacotta Fugo'));    // P.F
+        // console.log(getInitialFromName('Gyro Zeppeli'));    // G.Z
+
+        // 27 どれにしようかな
+        // あなたはレストランで何を注文しようか迷っています．しかしあまり時間がないので
+        // 「どれにしようかな天の神様の言うとおり」で决めてしまいましょう．
+        // メニューの数nを入力し，選ばれた1からnまでの数の一つを出力する choiceOfGod()関数を作成してください．
+        // 選ばれるメニューはこの文字数 21 を迷っているメニューの数で割れば求められます．
+        // ただし余りが 0 となるときはそのメニューの中で最後のものが選ばれることに注意しましょう．
+
+        // function choiceOfGod(n) {
+        //     //観察
+        //     //あまりが1の時 1番目になる
+        //     //あまりが2の時 2番目になる
+        //     //あまりが０の時 n番目になる
+        //     //あまりがnの時 n番目になる
+        //     if (21 % n == 0) {
+        //         return n;
+        //     } else if (21 % n != 0 ) {
+        //         return 21 % n;
+        //     } 
+        // }
+        // console.log(choiceOfGod(4));    // 1
+        // console.log(choiceOfGod(3));    // 3
+        // console.log(choiceOfGod(16));    // 5
+        // console.log(choiceOfGod(19));    // 2
+        // console.log(choiceOfGod(10));    // 1
+
+        // 28 日付のデータ
+        //     スペース区切りで西暦y，月m，日dが入力されます．
+        //     /区切りで文字列として出力する formatYMD()関数を作成してください．
+        //     ただし，西暦は4桁，月と日は2桁で出力しましょう．
+        // スライスの参考 return ("000" + n).slice(-3);
+
+        // function formatYMD(s) {
+        //     //まずは文字列sを３要素からなる配列にする 半角スペースので分かれているところで分割
+        //     const array = s.split(" ");
+        //     //Y(配列０番目)は"000"を足して末尾から４つ .slice(-4)で抜き出す
+        //     const Y = ("000" + array[0]).slice(-4);
+        //     //M(配列1番目)とD(配列2番目)は"0"を足して末尾から2つ .slice(-2)で抜き出す
+        //     const M = ("0" + array[1]).slice(-2);
+        //     const D = ("0" + array[2]).slice(-2);
+        //     return Y + "/" + M + "/" + D;
+        // }
+        // console.log(formatYMD('2021 1 1'));    // 2021/01/01
+        // console.log(formatYMD('2020 10 10'));    // 2020/10/10
+        // console.log(formatYMD('794 11 29'));    // 0794/11/29
+
+        // 29 アットマーク
+        //     半角小文字アルファベットで構成された文字列sが入力されます．
+        //     文字列sの中に含まれるatという文字列を全て@(アットマークに) 置換して出力する 
+        //     convertAtToAtMark()関数を作成してください．
+        // var str =”ミッキー・ドナルド・ミニー・グーフィー・ミッキー”;
+        //     //正規表現でミッキーを全部プルートに置換する
+        //     str = str.replace(/ミッキー/g, ”プルート”);
+        //    
+        // function convertAtToAtMark(s) {
+        //     return s.replace(/at/g, "@");  //正義表現で対象を絞り、置換
+        // }
+        // console.log(convertAtToAtMark('gsatcodeatquantity'));    // gs@code@quantity
+        // console.log(convertAtToAtMark('atatatjojoatatat'));    // @@@jojo@@@
+
+        // 30 花粉症でつらい
+        //    あなたは花粉症でティッシュを毎日使っては買いに行くのを繰り返していましたが，
+        //    必要なティッシュ箱の数を計算し一気に注文しようと考えました．
+        //    ティッシュ1箱が空になるまでの期間をm日，残りの花粉症の季節をn日が入力されるので，
+        //    花粉症の季節が終わるまでに必要なティッシュ箱の数を求める getNeedBox()関数を作成してください．
+
+        // function getNeedBox(m, n) {
+        //     if (m >= n) {
+        //         return 1;
+        //     } else {
+        //         return ~~(n / m) + 1; //ビット否定演算子を使用して小数部を切り捨てする方法
+        //     }
+        // }
+
+        // console.log(getNeedBox(7, 30));    // 5
+        // console.log(getNeedBox(3, 100));    // 34
+        // console.log(getNeedBox(7, 5));    // 1
+
+        // 31 本棚選び
+        //     あなたは新しい本棚を買おうと検討しています．そこで，既に持っている本の幅などから収まるか概算することにしました．
+        //     持っている本の幅を合計したものn(cm) ，検討している本棚の段数d，本が収まる幅e(cm)がそれぞれ半角スペース区切りで入力し，
+        //     本が収まるかどうかをOKまたはNGで出力するcanStoreBooks()関数を作成してください．
+        //     概算なので本それぞれの違い1段に収まるかは考えないことにします．
+        //     例えば，本の幅を合計したものが400(cm) ，検討している本棚の段数が5，本が収まる幅が85(cm)の場合は以下の様な入力になり，
+        //     400 5 85
+        //     各段の幅を合計したものは85かける5で425(cm)となり，400(cm)の本は収まるので以下のように出力して下さい．
+        //     OK
+        //     収まらない場合はNGを出力してくだだい．
+        // function canStoreBooks(s) {
+        //     //配列arrayにする
+        //     const array = s.split(" ");
+        //     //array[0]<=array[1]*array[2]となる時のif文をかく
+        //     if(array[0] <= array[1] * array[2]){
+        //         return "OK";
+        //     } else {
+        //         return "NG";
+        //     }
+        // }
+        // console.log(canStoreBooks('400 5 85'));    // OK
+        // console.log(canStoreBooks('500 4 70'));    // NG
+        // console.log(canStoreBooks('500 6 90'));    // OK
+
+        // 32 試合の回数
+        // あなたは1対1で戦う競技の大会を開くことにしました．
+        // n人の選手で総当り対戦を行う場合，対戦の回数を出力する calculateNumberOfGames()関数を作成してください．
+        // 総当り戦ではn人がそれぞれ自分自身以外と対戦します．
+        // 数学の組み合わせで言うnC2？  
+        // function calculateNumberOfGames(n) {
+        //     return n*(n-1)/2;
+        // }
+        // console.log(calculateNumberOfGames(4));    // 6 = 4*3/2
+        // console.log(calculateNumberOfGames(10));    // 45 = 10*9/2
+
+        // 33 連休の天気
+        //     あなたは7日間の連休をもらいましたが，降水確率が30 % 以下ならば外に出掛ける事に決めました．
+        //     7日間の降水確率(%)が半角スペース区切りで入力されるので，出掛ける日数の合計を出力する 
+        //     daysOfGoOut()関数を作成してください．
+        // var text = "あいうえおあいうえお" ;
+        // var count = (text.match(/あ/g) || []).length;
+        // 正規表現を使ってチャレンジ 30%以下 →1~30
+        //  1以上、30以下の２桁の数字  |はor
+        // [1-9]|[1-2][0-9]|30
+        ////正規表現だけで頑張ったがうまくいかなかった
+        // function daysOfGoOut(s) {
+        //     // const count = (s.match(/[1 - 9]/g)).length + (s.match(/[1 - 2][0 - 9]/g)).length + (s.match(/30/g)).length;
+        //     // const count = (s.match(/[1 - 9]/g)).length;
+        //     // const count = (s.match(/[1 - 9]/g) || (/[1 - 2][0 - 9]/g) || (/30/g) || []).length;
+        //     // return count;
+        //     // console.log(s.match(/[1-9]/g));  //この表現だけだと数字単体で処理してしまうため、２桁の数字も１つずつの文字として拾ってしまう
+        //     //１桁の数字を拾うにはどうしたらいいか？？
+        //     //前後に[0-9]の数字のどれもきていないことを条件にする
+        //     // console.log(s.match(/[1-2][0-9]/g));
+        //     // console.log(s.match(/30/g));
+        //     // console.log(s.match(/[^0-9][1-9][^0-9]/g));
+        //     // console.log(s.match(/[^0-9][1-9]/g));
+        //     // console.log(s.match(/[1-9][^0-9]/g));
+        //     // console.log(s.match(/[1-9]|[1-2][0-9]|30/g));
+        // }
+        ////ここからは挙動したパターン
+        //正規表現の数値１つだけの拾い方がわからんので、路線変更
+        //配列にしてからの処理で考える
+        // function daysOfGoOut(s) {
+        //     const array = s.split(" ");
+        //     // console.log(array);
+        //     const arrayUnder30 = [];
+        //     const arrayRain = [];
+        //     for (i = 0; i < 7; i++) {
+        //         if (array[i] < 31) {
+        //             // console.log(i);
+        //             // console.log(array[i]);
+        //             arrayUnder30.push(array[i]);
+        //             // console.log(arrayUnder30);
+        //             // return arrayUnder30.length;
+        //         } else {
+        //             arrayRain.push(array[i]);
+        //             // console.log(arrayRain);
+        //         }
+        //     }
+        //     return arrayUnder30.length;
+        // }
+        // console.log(daysOfGoOut('13 0 15 30 89 100 30'));    // 5
+        // console.log(daysOfGoOut('0 14 18 22 0 2 4'));    // 7
+        // console.log(daysOfGoOut('99 99 99 99 99 99 99'));    // 0
+
+        // 34 正三角形かどうか
+        //    あなたは，3つの辺の長さが分かっている三角形が正三角形なのかを判別しようとしています．
+        //    3つの辺の長さ a, b, c が半角スペース区切りで与えられるので正三角形ならYES, 
+        //    正三角形でなければNOと出力する isEquilateralTriangle()関数を作成してください．
+        // function isEquilateralTriangle(s) {
+        //     const array = s.split(" ");
+        //     if(array[0] == array[1] && array[1] == array[2]){
+        //         return "Yes";
+        //     } else {
+        //         return "No";
+        //     }
+        // }
+        // console.log(isEquilateralTriangle('10 10 10'));    // yes
+        // console.log(isEquilateralTriangle('3 4 5'));    // No
+
+        // 35 天気の表示
+        //     あなたは0 % 〜 100 % の降水確率を得て，その数値から天気を文字列で表示をしようと考えました．
+        //     表示のルールは以下のよう定めました．
+        //     降水確率が 0 % 以上 30 % 以下ならばsunny
+        //     降水確率が 31 % 以上 70 % 以下ならばcloudy
+        //     降水確率が 71 % 以上ならばrainy
+        //     降水確率n(%)が与えられるので上のルールに従って文字列を出力する 
+        //     showWeather()関数を作成してください．
+        // function showWeather(n) {
+        //     if(n < 31){
+        //         return "sunny";
+        //     } else if(70 < n){
+        //         return "rainy";
+        //     } else {
+        //         return "cloudy";
+        //     }
+        // }
+
+        // console.log(showWeather(31));    // cloudy
+        // console.log(showWeather(2));    // sunny
+        // console.log(showWeather(71));    // rainy
+
+        // 36 はじめまして
+        //     はじめましてのあいさつをしましょう．
+        //     名前が文字列s1で，性別が文字列s2(男性はM, 女性はF) で与えられます． 
+        //     これに対し，男性ならHi, Mr.〇〇(名前)と，女性ならHi, Ms.〇〇(名前)と出力する 
+        //     greet()関数を作成してください．
+        //     function greet(s1, s2) {
+        //         if(s2="M"){
+        //             return "HI, Mr." + s1 + "!!"; 
+        //         } else if (s2 = "F") {
+        //             return "HI, Ms." + s1 + "!!";
+        //     }
+        // }
+        //     console.log(greet('Stroheim', 'M'));    // Hi, Mr.Stroheim
+        //     console.log(greet('Trish', 'F'));    // Hi, Ms.Trish
+
+        // 37 通知票
+        //     ジーズ中学校ではこれまで5~1の数字で成績をつけていましたが，
+        //     英語教育に力を入れるため今年度からA~Eのアルファベットで成績をつけることにしました．
+        //     すでに成績を数字でつけてしまったあなたはあわててアルファベットに変換することにしました．
+        // 【変換ルール】
+        // 5 -> A
+        // 4 -> B
+        // 3 -> C
+        // 2 -> D
+        // 1 -> E
+        // 5教科について数字の評価が入力されるので，アルファベットの評価を出力する 
+        // convertNumberToAlphabet()関数を作成してください．
+        //参考１
+        // var str =”ミッキー・ドナルド・ミニー・グーフィー・ミッキー”;
+        //     //正規表現でミッキーを全部プルートに置換する
+        //     str = str.replace(/ミッキー/g, ”プルート”);
+        //参考２
+        // var str = "青は藍より出でて藍より青し";
+        // var str2 = str.replace(/青|藍/g, "<b>$&</b>");
+        // <b>青</b>は < b > 藍</ > より出でて < b > 藍</ > より < b > 青</ > し
+
+        //力技でやってみたけど、実際もっといい方法がありそう
+        // function convertNumberToAlphabet(s) {
+        //     const strA = s.replace(/5/g, "A");
+        //     const strB = strA.replace(/4/g, "B");
+        //     const strC = strB.replace(/3/g, "C");
+        //     const strD = strC.replace(/2/g, "D");
+        //     const strE = strD.replace(/1/g, "E");
+        //     return strE;
+        // }
+        //メッソドチェーンを使ってシンプルにした replace().replace()とつなげることによって、複数の文字列の置換ができます。
+        // function convertNumberToAlphabet(s) {
+        //     const str = s.replace(/5/g, "A").replace(/4/g, "B").replace(/3/g, "C").replace(/2/g, "D").replace(/1/g, "E");
+        //     return str;
+        // }
+        // console.log(convertNumberToAlphabet('53342'));    // ACCBD
+        // console.log(convertNumberToAlphabet('22222'));    // DDDDD
+        // console.log(convertNumberToAlphabet('51111'));    // AEEEE
+
+        // 38 不思議なタマゴ
+        //    持ったまま一定の距離を歩くと孵化する不思議なタマゴ（1km, 2km, 5km）があります．
+        //    あなたはこのタマゴをなるべくいっぺんに孵化させようと思い，3つをまとめて持っていくことにしました．
+        //    これらをすべて孵化させるのに最低限必要な歩行距離を求める getNumberOfSteps()関数を作成してください．
+        // 参考コード Math.maxは配列を与えてしまうとngなためreduce()を使う
+        // const aryMax = function (a, b) { return Math.max(a, b); }
+        //     const aryMin = function (a, b) { return Math.min(a, b); }
+        //     let ary = [5, 2, 3, 1, 10];
+        //     let max = ary.reduce(aryMax); // => 10
+        //     let min = ary.reduce(aryMin); // => 1
+        //ここから本体のコード
+        // function getNumberOfSteps(s) {
+        //     const aryMax = function (a, b) { return Math.max(a, b); }
+        //     const ary = s.split(" ");
+        //     return ary.reduce(aryMax);
+        // }
+        // console.log(getNumberOfSteps('1 2 5'));    // 5
+        // console.log(getNumberOfSteps('2 5 5'));    // 5
+        // console.log(getNumberOfSteps('1 2 1'));    // 2
+
+        // 39 台風の間隔
+        // あなたは気象庁のデータ分析の担当者で，8月の台風の上陸の間隔についてのデータを作るよう求められました．
+        // サンプルとなる5個の台風について上陸した日が与えられるので，それぞれ(2個目以降) について直前の上陸日との間隔日数を出力する
+        // getInterval()関数を作成してください．
+        // function getInterval(s) {
+        //     const array = s.split(" ");
+        //     return (array[1] - array[0]) + " " + (array[2] - array[1]) + " " + (array[3] - array[2]) + " " + (array[4] - array[3]);
+        // }
+        // console.log(getInterval('5 8 19 25 31'));    // 3 11 6 6
+        // console.log(getInterval('2 3 7 9 28'));    // 1 4 2 19
+
+        // 40 ◯◯の秋
+        // あなたは，「わたしの秋は◯◯の秋」というアンケートの集計を任されました．
+        // アンケートの回答はまちまちで，「◯◯の秋」と書く人もいれば「◯◯」の部分だけ書く人もいます．
+        // これでは不便なのでまず「◯◯」の部分だけを取り出すgetAutumn()関数を作成してください．
+
+        // function getAutumn(s) {
+        //     const str = s.replace(/noaki/g, '');
+        //     return str;
+        // }
+        // console.log(getAutumn('codenoaki'));    // code
+        // console.log(getAutumn('dokusyo'));    // dokusyo
+        // console.log(getAutumn('javascriptnoaki'));    // javascript
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
